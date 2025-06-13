@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout | Purple Bubble</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Playfair+Display:wght@500&display=swap" rel="stylesheet"/>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">Purple Bubble</h1>
+      <nav class="nav">
+        <a href="{{ url_for('shop') }}">Shop</a>
+        <a href="{{ url_for('cart') }}">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="checkout-page">
+    <h2>Checkout</h2>
+
+    <section class="shipping-form">
+      <h3>Shipping Details 📦</h3>
+      <form id="checkout-form" method="POST" action="{{ url_for('place_order') }}">
+        <label>
+          Full Name:
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Address:
+          <input type="text" name="address" required />
+        </label>
+        <label>
+          City:
+          <input type="text" name="city" required />
+        </label>
+        <label>
+          Pincode:
+          <input type="text" name="pincode" required pattern="[0-9]{6}" />
+        </label>
+        <label>
+          Phone Number:
+          <input type="tel" name="phone" required pattern="[0-9]{10}" />
+        </label>
+        <button class="btn" type="submit">Place Order</button>
+      </form>
+    </section>
+
+    <section class="order-summary">
+      <h3>Order Summary 🧾</h3>
+      <div id="summary-items"></div>
+      <p><strong>Total: ₹<span id="summary-total">0</span></strong></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Purple Bubble. All rights reserved.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/checkout.js') }}"></script>
+</body>
+</html>

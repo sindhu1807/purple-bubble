@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Product | Purple Bubble</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>📦 Upload New Product</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for msg in messages %}
+            <li style="color: green;">{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form action="/upload" method="POST">
+      <label>Name: <input type="text" name="name" required></label><br><br>
+      <label>Price: <input type="number" name="price" required></label><br><br>
+      <label>Description: <textarea name="description" required></textarea></label><br><br>
+      <label>Image Path: <input type="text" name="image" placeholder="images/product4.jpg" required></label><br><br>
+      <button class="btn" type="submit">Upload Product</button>
+    </form>
+  </div>
+</body>
+</html>

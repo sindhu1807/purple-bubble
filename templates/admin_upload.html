@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Upload | Purple Bubble</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Add New Product 💅</h1>
+    <form action="/admin/upload" method="POST" enctype="multipart/form-data">
+      <label>Name: <input type="text" name="name" required></label><br><br>
+      <label>Price (₹): <input type="number" name="price" required></label><br><br>
+      <label>Description: <textarea name="desc" required></textarea></label><br><br>
+      <label>Image: <input type="file" name="image" accept="image/*" required></label><br><br>
+      <button class="btn" type="submit">Upload Product</button>
+    </form>
+  </div>
+</body>
+</html>
